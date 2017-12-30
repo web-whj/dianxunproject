@@ -1,12 +1,18 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>矿力计算</title>
+	<title>Document</title>
 	<link rel="img/LOGO.ico" href="">
 	<link rel="stylesheet" href="css/Adaptive.css">
 	<link rel="stylesheet" href="css/counter.css">
 	<link rel="stylesheet" href="http://at.alicdn.com/t/font_518775_28rxw0wmc2yjsjor.css">
+	<script src="js/method.js"></script>
 	<script src="js/counter.js"></script>
 </head>
 <body>
@@ -26,11 +32,15 @@
 				</a>
 			</div>
 			<ul class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-sj-10">
-				<li><a href="">实时行情</a></li>
-				<li><a href="">矿场情况</a></li>
-				<li><a href="" class="current">矿力计算</a></li>
-				<li><a href="">区块查询</a></li>
-				<li><a href="">口袋排行</a></li>
+					<li><a href="<%=request.getContextPath()%>/DateServlet">实时行情</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/DateServlet?method=Info">矿场情况</a></li>
+				<li><a href="<%=path %>/counter.jsp" class="current">矿力计算</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/QueryTrendServlet?method=queryDe&address=0x0003fadb6afb6885e0634366a31552cab47e5599">区块查询</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/QKServlet?method=top"
+					class="current">口袋排行</a></li>
 				<li><a href="">链克论坛</a></li>
 			</ul>
 		</div>

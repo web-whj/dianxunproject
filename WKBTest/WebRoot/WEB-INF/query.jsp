@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*,com.google.gson.JsonArray" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -26,11 +30,14 @@
 				</a>
 			</div>
 			<ul class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-sj-10">
-				<li><a href="">实时行情</a></li>
-				<li><a href="">矿场情况</a></li>
-				<li><a href="">矿力计算</a></li>
-				<li><a href=""  class="current">区块查询</a></li>
-				<li><a href="">口袋排行</a></li>
+					<li><a href="<%=request.getContextPath()%>/DateServlet">实时行情</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/DateServlet?method=Info">矿场情况</a></li>
+				<li><a href="<%=path %>/counter.jsp">矿力计算</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/QueryTrendServlet?method=queryDe&address=0x0003fadb6afb6885e0634366a31552cab47e5599" class="current">区块查询</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/QKServlet?method=top">口袋排行</a></li>
 				<li><a href="">链克论坛</a></li>
 			</ul>
 		</div>
@@ -41,7 +48,7 @@
 			<h3>玩客币TOP100排行榜</h3>
 		</div>
 		<div class="nav3">
-			<a herf="" class="span1">财富榜</a>
+			<a href="" class="span1">财富榜</a>
 			<a href="">交易榜</a>
 			<a href="">最新交易</a>
 		</div>
@@ -49,13 +56,16 @@
 		<div class="con">
 			<div class="con-top">
 				<p>钱包地址</p>
-				<span>0x36de1aea7739320ae50ba3c68a491e2455658eea</span>
-			</div>
-			<div class="con-cen">
+				<span><%=request.getAttribute("mainAccount")%></span>
+				</div>
+				<div class="con-cen">
 				<ul>
 					<li>
+				
 						<span>交易次数</span>
-						<span>160</span>
+				 
+						<span><%=request.getAttribute("tradeNum") %></span>
+						
 					</li>
 					<li>
 						<span>总共收款</span>
@@ -71,7 +81,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="con-bot">
+				<div class="con-bot">
 				<div class="con-bot-t">
 					<div class="left">交易历史</div>
 					<div class="right">
@@ -86,9 +96,9 @@
 							<span>2017-12-24 17:59:33</span>
 							<span>0.01</span>
 						</div>
-						<a href="">0xaaec6552c41b49695199c3850b6085f528186476</a>
+						<a href=""><%=request.getAttribute("account") %></a>
 						<div class="mon">1000wkc</div>
-						<a href="">hash: 0x6a1258c7268488a9736b7dbbd8985da24f2983e80beef8cf9b1a8c4512510fd8</a>
+						<a href=""><%=request.getAttribute("hash") %></a>
 					</li>
 				</ul>
 				<ul class="none">
